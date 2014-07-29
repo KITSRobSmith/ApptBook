@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.kingfisher.co.uk/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.kingfisher.co.uk/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.kingfisher.co.uk/">
+      <s:element name="GetAvailability">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inputFromSE3ForAvailability" type="tns:InputFromSE3ForFindAvailability" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InputFromSE3ForFindAvailability">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="dateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="dateTo" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppointmentLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StoreID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConsultantLists" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAvailabilityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAvailabilityResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AppointmentForSE3">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CancelAppointmentStatusForSE3">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponse" type="tns:ResponseStatusForSE3" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ResponseStatusForSE3">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ServiceResponseStatusCode" type="tns:HttpStatusCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseStatusText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="HttpStatusCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Continue" />
+          <s:enumeration value="SwitchingProtocols" />
+          <s:enumeration value="OK" />
+          <s:enumeration value="Created" />
+          <s:enumeration value="Accepted" />
+          <s:enumeration value="NonAuthoritativeInformation" />
+          <s:enumeration value="NoContent" />
+          <s:enumeration value="ResetContent" />
+          <s:enumeration value="PartialContent" />
+          <s:enumeration value="MultipleChoices" />
+          <s:enumeration value="Ambiguous" />
+          <s:enumeration value="MovedPermanently" />
+          <s:enumeration value="Moved" />
+          <s:enumeration value="Found" />
+          <s:enumeration value="Redirect" />
+          <s:enumeration value="SeeOther" />
+          <s:enumeration value="RedirectMethod" />
+          <s:enumeration value="NotModified" />
+          <s:enumeration value="UseProxy" />
+          <s:enumeration value="Unused" />
+          <s:enumeration value="TemporaryRedirect" />
+          <s:enumeration value="RedirectKeepVerb" />
+          <s:enumeration value="BadRequest" />
+          <s:enumeration value="Unauthorized" />
+          <s:enumeration value="PaymentRequired" />
+          <s:enumeration value="Forbidden" />
+          <s:enumeration value="NotFound" />
+          <s:enumeration value="MethodNotAllowed" />
+          <s:enumeration value="NotAcceptable" />
+          <s:enumeration value="ProxyAuthenticationRequired" />
+          <s:enumeration value="RequestTimeout" />
+          <s:enumeration value="Conflict" />
+          <s:enumeration value="Gone" />
+          <s:enumeration value="LengthRequired" />
+          <s:enumeration value="PreconditionFailed" />
+          <s:enumeration value="RequestEntityTooLarge" />
+          <s:enumeration value="RequestUriTooLong" />
+          <s:enumeration value="UnsupportedMediaType" />
+          <s:enumeration value="RequestedRangeNotSatisfiable" />
+          <s:enumeration value="ExpectationFailed" />
+          <s:enumeration value="UpgradeRequired" />
+          <s:enumeration value="InternalServerError" />
+          <s:enumeration value="NotImplemented" />
+          <s:enumeration value="BadGateway" />
+          <s:enumeration value="ServiceUnavailable" />
+          <s:enumeration value="GatewayTimeout" />
+          <s:enumeration value="HttpVersionNotSupported" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ErrorForSE3">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CreationDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServiceResponseErrorCode" type="tns:HttpStatusCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseErrorText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReturnAvailabilityToSE3">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ConsultantID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConsultantName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateFrom" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeFrom" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateTo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeTo" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="AvailabilityStatus" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfReturnAvailabilityToSE3">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReturnAvailabilityToSE3" nillable="true" type="tns:ReturnAvailabilityToSE3" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BookAppointment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inputFromSE3ForBookAppointment" type="tns:InputFromSE3ForBookAppointment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InputFromSE3ForBookAppointment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="consultantID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="dateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="dateTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="timeFrom" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="timeTo" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="notes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="appointmentLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="storeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppointmentAttachment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BookAppointmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BookAppointmentResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelAppointment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inputFromSE3ForCancelAppointment" type="tns:InputFromSE3ForCancelAppointment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InputFromSE3ForCancelAppointment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="exchangeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="consultantID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelAppointmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelAppointmentResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAvailabilitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAvailability" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailabilitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookAppointmentSoapIn">
+    <wsdl:part name="parameters" element="tns:BookAppointment" />
+  </wsdl:message>
+  <wsdl:message name="BookAppointmentSoapOut">
+    <wsdl:part name="parameters" element="tns:BookAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelAppointmentSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelAppointment" />
+  </wsdl:message>
+  <wsdl:message name="CancelAppointmentSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SE3ControllingService1Soap">
+    <wsdl:operation name="GetAvailability">
+      <wsdl:input message="tns:GetAvailabilitySoapIn" />
+      <wsdl:output message="tns:GetAvailabilitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BookAppointment">
+      <wsdl:input message="tns:BookAppointmentSoapIn" />
+      <wsdl:output message="tns:BookAppointmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelAppointment">
+      <wsdl:input message="tns:CancelAppointmentSoapIn" />
+      <wsdl:output message="tns:CancelAppointmentSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SE3ControllingService1Soap" type="tns:SE3ControllingService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAvailability">
+      <soap:operation soapAction="http://www.kingfisher.co.uk/GetAvailability" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookAppointment">
+      <soap:operation soapAction="http://www.kingfisher.co.uk/BookAppointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAppointment">
+      <soap:operation soapAction="http://www.kingfisher.co.uk/CancelAppointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SE3ControllingService1Soap12" type="tns:SE3ControllingService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAvailability">
+      <soap12:operation soapAction="http://www.kingfisher.co.uk/GetAvailability" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookAppointment">
+      <soap12:operation soapAction="http://www.kingfisher.co.uk/BookAppointment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAppointment">
+      <soap12:operation soapAction="http://www.kingfisher.co.uk/CancelAppointment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SE3ControllingService1">
+    <wsdl:port name="SE3ControllingService1Soap" binding="tns:SE3ControllingService1Soap">
+      <soap:address location="http://localhost:2787/Services/SE3/SE3ControllingService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SE3ControllingService1Soap12" binding="tns:SE3ControllingService1Soap12">
+      <soap12:address location="http://localhost:2787/Services/SE3/SE3ControllingService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
