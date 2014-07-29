@@ -5,7 +5,8 @@ using System.Text;
 
 namespace ApptBookingTestConsole
 {
-    class BlankGITClassBranch2
+    clas BlankGITClassBranch2
     {
+        Oh dear... conflict to resolve RS
     }
 }
