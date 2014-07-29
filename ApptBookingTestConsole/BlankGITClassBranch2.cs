@@ -7,5 +7,7 @@ namespace ApptBookingTestConsole
 {
     class BlankGITClassBranch2
     {ff
+    
+    Update from origin v2
     }
 }
