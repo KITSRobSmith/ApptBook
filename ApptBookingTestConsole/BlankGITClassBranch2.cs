@@ -6,6 +6,6 @@ using System.Text;
 namespace ApptBookingTestConsole
 {
     class BlankGITClassBranch2
-    {
+    {ff
     }
 }
